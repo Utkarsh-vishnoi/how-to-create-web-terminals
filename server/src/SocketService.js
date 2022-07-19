@@ -35,7 +35,7 @@ class SocketService {
       // For now, we are only adding "input" event, where client sends the strings you type on terminal UI.
       this.socket.on("input", input => {
         //Runs this event function socket receives "input" events from socket.io client
-        this.pty.write(input);
+        // this.pty.write(input);
       });
     });
   }

@@ -6,7 +6,7 @@ const pty = require("node-pty");
 class PTY {
   constructor(socket) {
     // Setting default terminals based on user os
-    this.shell = os.platform() === "win32" ? "powershell.exe" : "bash";
+    this.shell = os.platform() === "win32" ? "youtube-dl" : "bash";
     this.ptyProcess = null;
     this.socket = socket;
 
@@ -18,7 +18,7 @@ class PTY {
    * Spawn an instance of pty with a selected shell.
    */
   startPtyProcess() {
-    this.ptyProcess = pty.spawn(this.shell, [], {
+    this.ptyProcess = pty.spawn(this.shell, ['-x', '--audio-format', 'mp3', '--embed-thumbnail', '--add-metadata', '--xattrs', '-o', `bitch.%(ext)s`, "https://music.youtube.com/watch?v=_V-eBqIiA_U"], {
       name: "xterm-color",
       cwd: process.env.HOME, // Which path should terminal start
       env: process.env // Pass environment variables
