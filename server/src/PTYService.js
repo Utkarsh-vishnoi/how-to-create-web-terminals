@@ -6,7 +6,7 @@ const pty = require("node-pty");
 class PTY {
   constructor(socket) {
     // Setting default terminals based on user os
-    this.shell = os.platform() === "win32" ? "youtube-dl" : "bash";
+    this.shell = os.platform() === "win32" ? "youtube-dl" : "youtube-dl";
     this.ptyProcess = null;
     this.socket = socket;
 
